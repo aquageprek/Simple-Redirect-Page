@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirection Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="font-montserrat bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 overflow-hidden">
+        <svg class="absolute left-0 top-0 h-full w-full text-white/5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <path d="M0,0 L1000,0 L1000,1000 L0,1000 Z" fill="currentColor" />
+            <path d="M0,800 Q250,700 500,800 T1000,800 L1000,1000 L0,1000 Z" fill="currentColor" opacity="0.5" />
+            <path d="M0,900 Q250,800 500,900 T1000,900 L1000,1000 L0,1000 Z" fill="currentColor" />
+        </svg>
+    </div>
+    
+    <div class="relative z-10 bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 max-w-lg w-full mx-4 shadow-2xl animate-fade-in">
+        <h1 class="text-4xl font-bold mb-6 text-center">Eits, Tunggu Sebentar</h1>
+        <p class="text-xl mb-8 text-center">Kami Sedang Mengarahkanmu ke Halaman Tersebut, Harap Tunggu yaa! 😃</p>
+        <div id="countdown" class="text-6xl font-bold mb-8 text-center animate-pulse-slow"></div>
+        <button onclick="skipRedirect()" class="w-full bg-white text-gray-900 py-3 rounded-full font-semibold text-lg transition duration-300 ease-in-out transform hover:bg-gray-100 hover:-translate-y-1 hover:shadow-lg">
+            Lewati
+        </button>
+        <p class="text-sm text-gray-500 text-center mt-4">Made By <a href="https://www.instagram.com/itzazka.td/" target="_blank">@itzazka.td</a> ⚡</p>
+    </div>
+
+    <script>
+        let count = 10;
+        const countdownElement = document.getElementById('countdown');
+        
+        function updateCountdown() {
+            countdownElement.innerText = count;
+            if (count > 0) {
+                count--;
+                setTimeout(updateCountdown, 1000);
+            } else {
+                redirect();
+            }
+        }
+        
+        function redirect() {
+            window.location.href = 'https://www.youtube.com/';
+        }
+        
+        function skipRedirect() {
+            redirect();
+        }
+        
+        updateCountdown();
+    </script>
+
+    <style>
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 1s ease-out;
+        }
+    </style>
+</body>
+</html>
